@@ -1,0 +1,57 @@
+<div id="app">
+    <p>
+        {{ message }}
+    </p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            message: 'vuejs lifecycle demo'
+        },
+        beforeCreate: function () {
+            console.group('beforeCreate-----------')
+            console.log('%c%s', 'color:red', 'el：' + this.$el); //undefined
+            console.log('%c%s', 'color:red', 'data：' + this.$data); //undefined
+            console.log('%c%s', 'color:red', 'message：' + this.message); //undefined   
+        },
+        created: function () {
+            console.group('created')
+            console.log('%c%s', 'color:red', 'el：' + this.$el); //undefined
+            console.log('%c%s', 'color:red', 'data：' + this.$data); //[object Object]
+            console.log('%c%s', 'color:red', 'message：' + this.message); //vuejs lifecycle demo            
+        },
+        beforeMount: function () {
+            console.group('beforeMount')
+            console.log('%c%s', 'color:red', 'el：' + this.$el); 
+            console.log(this.$el);          
+        },
+        mounted: function () {
+            console.group('mounted')
+            console.log(this.$el);          
+        },
+        beforeUpdate: function () {
+            console.group('beforeUpdate')
+            console.log('%c%s', 'color:red', 'message：' + this.message);      
+            console.log('%c%s', 'color:red', 'el：' + this.$el); 
+            console.log(this.$el);    
+        },
+        updated: function () {
+            console.group('updated')          
+        },
+        beforeDestroy: function () {
+            console.group('beforeDestroy')
+            console.log('%c%s', 'color:red', 'el：' + this.$el); 
+            console.log(this.$el);
+            console.log('%c%s', 'color:red', 'message：' + this.message);            
+        },
+        destroyed: function () {
+            console.group('destroyed')
+            console.log('%c%s', 'color:red', 'el：' + this.$el); 
+            console.log(this.$el);
+            console.log('%c%s', 'color:red', 'data：' + this.$data); 
+            console.log('%c%s', 'color:red', 'message：' + this.message);       
+        }
+    })
+</script>
