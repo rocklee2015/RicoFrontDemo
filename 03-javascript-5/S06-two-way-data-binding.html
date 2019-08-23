@@ -1,0 +1,29 @@
+<script>
+    var o = {
+        a: 0
+    }
+    Object.defineProperty(o, "b", {
+        get: function () {
+            return this.a + 1;
+        },
+        set: function (value) {
+            this.a = value / 2;
+        }
+    });
+    console.group();
+    console.log(o.a); // "0"
+    console.log(o.b); // "1"
+
+   
+    // 更新o.a
+    o.a = 5;
+    console.group();
+    console.log(o.a); // "5"
+    console.log(o.b); // "6"
+
+    // 更新o.b
+    o.b = 10;
+    console.group();
+    console.log(o.a); // "5"
+    console.log(o.b); // "6"
+</script>
